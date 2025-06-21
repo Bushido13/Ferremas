@@ -1,0 +1,30 @@
+{% extends "usuarios/base_panel.html" %}
+{% block contenido %}
+<h3>Detalle del Pedido #{{ pedido.id }}</h3>
+<p><strong>Cliente:</strong> {{ pedido.cliente.username }}</p>
+<p><strong>Fecha:</strong> {{ pedido.fecha }}</p>
+<p><strong>Tipo de entrega:</strong> {{ pedido.tipo_entrega }}</p>
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>Producto</th>
+            <th>Precio Unitario</th>
+            <th>Cantidad</th>
+            <th>Stock Disponible</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for detalle in detalles %}
+        <tr>
+            <td>{{ detalle.producto.nombre }}</td>
+            <td>${{ detalle.valor_unitario }}</td>
+            <td>{{ detalle.cantidad }}</td>
+            <td>{{ detalle.producto.stock }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'gestion_pedidos_vendedor' %}" class="btn btn-secondary">Volver</a>
+{% endblock %}

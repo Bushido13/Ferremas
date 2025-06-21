@@ -1,0 +1,10 @@
+{% extends "usuarios/base_panel.html" %}
+{% block contenido %}
+<h3>¡Hola {{ user.username }}!</h3>
+<p>Bienvenido a tu panel de cliente. Aquí podrás:</p>
+<ul>
+    <li><a href="{% url 'ver_catalogo' %}" class="btn btn-outline-primary btn-sm">Ver Catálogo</a></li>
+    <li>Gestionar tu carrito</li>
+    <li>Ver tus pedidos</li>
+</ul>
+{% endblock %}

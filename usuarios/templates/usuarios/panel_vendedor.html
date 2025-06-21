@@ -1,0 +1,12 @@
+{% extends "usuarios/base_panel.html" %}
+{% block contenido %}
+<h3>¡Hola {{ user.username }}!</h3>
+<p>Este es tu panel de Vendedor. Aquí podrás:</p>
+<ul>
+    <a href="{% url 'gestion_pedidos_vendedor' %}" class="btn btn-outline-primary btn-sm">
+    Ver y aprobar pedidos
+    </a>
+    <li>Coordinar con el bodeguero los despachos</li>
+    <li>Consultar stock disponible</li>
+</ul>
+{% endblock %}

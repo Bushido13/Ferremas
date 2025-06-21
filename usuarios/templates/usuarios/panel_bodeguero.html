@@ -1,0 +1,35 @@
+{% extends "usuarios/base_panel.html" %}
+{% block contenido %}
+<h3>📦 Órdenes de Preparación</h3>
+
+{% if ordenes %}
+<table class="table table-bordered">
+    <thead class="table-primary">
+        <tr>
+            <th>ID Orden</th>
+            <th>ID Pedido</th>
+            <th>Cliente</th>
+            <th>Fecha de Creación</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for orden in ordenes %}
+        <tr>
+            <td>{{ orden.id }}</td>
+            <td>{{ orden.pedido.id }}</td>
+            <td>{{ orden.pedido.cliente.username }}</td>
+            <td>{{ orden.fecha_creacion }}</td>
+            <td>
+                <a href="{% url 'preparar_orden' orden.id %}" class="btn btn-success btn-sm">Marcar como Preparada</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="alert alert-info">No hay órdenes de preparación pendientes.</div>
+{% endif %}
+
+{% endblock %}
+
